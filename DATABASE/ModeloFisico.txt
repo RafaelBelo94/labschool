@@ -1,0 +1,39 @@
+CREATE DATABASE labschool;
+
+USE labschool;
+
+CREATE TABLE aluno(
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(250) NOT NULL,
+telefone VARCHAR(11) NOT NULL,
+dt_Nascimento DATE NOT NULL,
+endereco VARCHAR(255) NOT NULL,
+fk_turma INT
+);
+
+CREATE TABLE turma(
+id int primary key auto_increment,
+nome VARCHAR(250) NOT NULL,
+descricao VARCHAR(255) NOT NULL,
+quantidade_alunos INT NOT NULL
+);
+
+ALTER TABLE aluno ADD FOREIGN KEY (fk_turma) REFERENCES turma (id);
+
+ALTER TABLE turma ADD FOREIGN KEY (fk_aluno) REFERENCES aluno (id);
+
+INSERT INTO turma (nome, descricao, quantidade_alunos) VALUES ("Front-END",
+"Curso de formação em habilidade de criação de páginas html customizadas para sites de empresas e negocios"
+,1);
+
+SELECT * FROM ALUNO;
+SELECT * FROM TURMA;
+
+INSERT INTO aluno (nome, telefone, dt_Nascimento, endereco, fk_turma) VALUES 
+                ("Shirley Miranda de Souza", 
+                "12945132215", 19991110,
+                "Rua das Marrecas, 312, Jardim Bolivar, Rio de Janeiro-RJ",
+                1);
+
+!atenção! comando para deletar o banco de dados 
+//DROP DATABASE labschool;
